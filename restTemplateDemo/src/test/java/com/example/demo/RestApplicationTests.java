@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -26,32 +27,29 @@ import com.example.demo.model.URL;
 @SpringBootTest
 @WebAppConfiguration
 public class RestApplicationTests {
+	
 	RestTemplate restTemplate;
 	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@Before
     public void setUp() {
-
-        restTemplate = new RestTemplate();
-
+		restTemplate = new RestTemplate();
     }
 	
-//	@Test
-//	public void contextLoads() {
-//	
-//	}
+	@Test
+	public void contextLoads() {
 	
-//	@Test
-//	public void testGet() {
-//		String url ="https://httpbin.org/get";
-//		
-//		ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, null, String.class);
-//		String result = response.getBody();
-//		logger.info("result ::::::::::::::: {}" ,result);
-//		assertThat(result, containsString("https://httpbin.org/get"));
-//			
-//	}
+	}
+	
+	@Test
+	public void testGet() {
+		String url ="https://httpbin.org/get";
+		ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, null, String.class);
+		String result = response.getBody();
+		logger.info("result ::::::::::::::: {}" ,result);
+		assertThat(result, containsString("https://httpbin.org/get"));
+	}
 	
 	@Test
 	public void testPost() throws JSONException {
